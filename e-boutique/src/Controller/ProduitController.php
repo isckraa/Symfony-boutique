@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Produit;
+use App\Form\Produit1Type;
+use App\Repository\ProduitRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class ProduitController extends AbstractController
+{
+    public function index(ProduitRepository $produitRepository): Response
+    {
+        return $this->render('produit/index.html.twig', [
+            'produits' => $produitRepository->findAll(),
+        ]);
+    }
+
+    public function new(Request $request): Response
+    {
+        $produit = new Produit();
+        $form = $this->createForm(Produit1Type::class, $produit);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($produit);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('produit_index');
+        }
+
+        return $this->render('produit/new.html.twig', [
+            'produit' => $produit,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    public function show(Produit $produit): Response
+    {
+        return $this->render('produit/show.html.twig', [
+            'produit' => $produit,
+        ]);
+    }
+
+    public function edit(Request $request, Produit $produit): Response
+    {
+        $form = $this->createForm(Produit1Type::class, $produit);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('produit_index');
+        }
+
+        return $this->render('produit/edit.html.twig', [
+            'produit' => $produit,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    public function delete(Request $request, Produit $produit): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($produit);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('produit_index');
+    }
+}
