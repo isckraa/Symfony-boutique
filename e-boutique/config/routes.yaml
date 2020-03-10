@@ -2,18 +2,3 @@ home:
     path: /
     controller: App\Controller\DefaultController::index
 
-produit_index:
-    path: /produit/
-    controller: App\Controller\ProduitController::index
-produit_new:
-    path: /produit/new
-    controller: App\Controller\ProduitController::new
-produit_show:
-    path: /produit/{id}
-    controller: App\Controller\ProduitController::show
-produit_edit:
-    path: /produit/{id}/edit
-    controller: App\Controller\ProduitController::edit
-produit_delete:
-    path: /produit/{id}
-    controller: App\COntroller\ProduitController::delete
