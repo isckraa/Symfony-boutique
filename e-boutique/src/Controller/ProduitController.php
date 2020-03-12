@@ -49,14 +49,14 @@ class ProduitController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
+    
     /**
-     * @Route("/{id}", name="produit_show", methods={"GET"})
+     * @Route("/categorie/{categoryId}", name="produit_show_category", methods={"GET"})
      */
-    public function show(Produit $produit): Response
+    public function showByCategory(ProduitRepository $produitRepository, $categoryId): Response
     {
         return $this->render('produit/show.html.twig', [
-            'produit' => $produit,
+            'produits' => $produitRepository->findByExampleField($categoryId),
         ]);
     }
 

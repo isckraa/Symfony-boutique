@@ -7,7 +7,7 @@
     <div class="produit-search">
         <div class="produit-search__wrapper">
             {% for categorie in categories %}
-                        <a class="produit-search__item">{{ categorie.nom }}</a>
+                <a href="{{ path('produit_show_category', {'categoryId': loop.index}) }}" class="produit-search__item">{{ categorie.nom }}</a>
             {% endfor %}
         </div>
     </div>
@@ -20,13 +20,14 @@
                     <div class="card__content">
                         <div class="card__title">{{ produit.nom }}</div>
                         <p class="card__text">{{ produit.description }}</p>
+                        <p>{{ produit.categorie.nom }}</p>
                         <div class="card_info">
                             <div class="card-info__left">
-                                <span>&#128077;</span>{{ produit.avis }}
-                                <span>&#11088;</span>{{ produit.note }}
+                                <span>&#128077;</span> {{ produit.avis }}
+                                <span>&#11088;</span> {{ produit.note }}
                             </div>
                             <div class="card-info__right">
-                                <span>&#128182;</span>{{ produit.prix }}
+                                <span>&#128182;</span> {{ produit.prix }}€
                             </div>
                         </div>
                         <button class="btn btn--block card__btn">Ajouter au panier</button>
