@@ -1,3 +1,14 @@
+@keyframes transitionY{
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -17,6 +28,7 @@
 
 .site-content-home {
     padding-top: 50vh;
+    animation: transitionY 1.5s 1 0.5s linear;
 }
 
 .site-content-produit {
