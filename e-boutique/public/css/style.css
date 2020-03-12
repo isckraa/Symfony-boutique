@@ -23,6 +23,11 @@
     padding-top: 100px;
 }
 
+.site-content-produit__produits {
+    margin-left: 16px;
+    margin-top: 40px;
+}
+
 .container {
     max-width: 1200px;
 }
@@ -98,9 +103,9 @@ a:hover {
     transition: linear .3s;
 }
 
-.produit-search__item:not(:last-child) {
+/* .produit-search__item:not(:last-child) {
     border-right: 1px solid #333333;
-}
+} */
 
 .card__content .btn {
     background-color: white;

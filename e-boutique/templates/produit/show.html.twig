@@ -3,14 +3,36 @@
 {% block title %}Produit{% endblock %}
 
 {% block body %}
-    <div class="site-content site-content-produit container">
-        <h1>Produits</h1>
-
-        <pre>
-            {{ dump(produits) }}
-        </pre>
-        {% for produit in produits %}
-            <h1>{{ produit.nom }}</h1>
-        {% endfor %}
+<div class="site-content site-content-produit container">
+    <div class="site-content-produit__produits">
+        <a href="{{ path('produit_index') }}" class="btn btn-warning">Voir tous les produits</a>
     </div>
+
+    <ul class="cards">
+    {% for produit in produits %}
+        <li class="cards__item">
+            <div class="card">
+                <div class="card__image card__image--fence"></div>
+                    <div class="card__content">
+                        <div class="card__title">{{ produit.nom }}</div>
+                        <p class="card__text">{{ produit.description }}</p>
+                        <p>{{ produit.categorie.nom }}</p>
+                        <div class="card_info">
+                            <div class="card-info__left">
+                                <span>&#128077;</span> {{ produit.avis }}
+                                <span>&#11088;</span> {{ produit.note }}
+                            </div>
+                            <div class="card-info__right">
+                                <span>&#128182;</span> {{ produit.prix }}€
+                            </div>
+                        </div>
+                        <button class="btn btn--block card__btn">Ajouter au panier</button>
+                    </div>
+            </div>
+        </li>
+    {% else %}
+        <p>no records found</p>
+    {% endfor %}
+    </ul>
+</div>
 {% endblock %}
