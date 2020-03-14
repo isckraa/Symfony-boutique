@@ -19,9 +19,9 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
-    // /**
-    //  * @return Produit[] Returns an array of Produit objects
-    //  */
+    /**
+     * @return Produit[] Returns an array of Produit objects
+     */
 
     public function findByExampleField($value)
     {
@@ -35,16 +35,12 @@ class ProduitRepository extends ServiceEntityRepository
         ;
     }
     
+    /** 
+     * @return Produit[] Rècupèrer les produits en lien avec une recherche
+     */
 
-    /*
-    public function findOneBySomeField($value): ?Produit
+    public function findSearch(): array 
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $this->findAll();
     }
-    */
 }

@@ -1,0 +1,10 @@
+<div class="card">
+    <img src="https://unsplash.it/800/600?image=59" alt="card-image" class="card-img-top">
+    <div class="card-body">
+        <h5 class="card-title">{{ produit.nom }}</h5>
+        <p class="text text-muted">{{ produit.description }}</p>
+        <div class="card-title text-danger" style="font-weight: bold; font-size: 1.5rem;">
+            {{ produit.prix | number_format(0, ',', ' ') }} €
+        </div>
+    </div>
+</div>
