@@ -21,13 +21,15 @@ class ProduitController extends AbstractController
     /**
      * @Route("/", name="produit_index", methods={"GET"})
      */
-    public function index(ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
+    public function index(ProduitRepository $produitRepository, CategorieRepository $categorieRepository, Request $request): Response
     {
         $data = new SearchData();
-        $form = $this->createForm(SearchForm::class, $data);
+        $form = $this->createForm( SearchForm::class, $data );
+        $form->handleRequest( $request );
+        $produits = $produitRepository->findSearch( $data );
 
         return $this->render('produit/index.html.twig', [
-            'produits'      => $produitRepository->findAll(),
+            'produits'      => $produits,
             'categories'    => $categorieRepository->findAll(),
             'form'          => $form->createView(),
         ]);
