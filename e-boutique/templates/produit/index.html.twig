@@ -14,6 +14,9 @@
                         {% include 'produit/_card.html.twig' with {produit: produit} only %}
                     {% endfor %}
                 </div>
+                <div class="mt-4">
+                    {{ knp_pagination_render(produits) }}
+                </div>
             </div>
         </div>
     </div>
