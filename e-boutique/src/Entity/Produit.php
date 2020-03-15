@@ -62,7 +62,7 @@ class Produit
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom( string $nom ): self
     {
         $this->nom = $nom;
 
@@ -74,7 +74,7 @@ class Produit
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription( string $description ): self
     {
         $this->description = $description;
 
@@ -86,7 +86,7 @@ class Produit
         return $this->prix;
     }
 
-    public function setPrix(int $prix): self
+    public function setPrix( int $prix ): self
     {
         $this->prix = $prix;
 
@@ -98,7 +98,7 @@ class Produit
         return $this->avis;
     }
 
-    public function setAvis(int $avis): self
+    public function setAvis( int $avis ): self
     {
         $this->avis = $avis;
 
@@ -110,7 +110,7 @@ class Produit
         return $this->note;
     }
 
-    public function setNote(float $note): self
+    public function setNote( float $note ): self
     {
         $this->note = $note;
 
@@ -122,7 +122,7 @@ class Produit
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage( ?string $image ): self
     {
         $this->image = $image;
 
@@ -134,7 +134,7 @@ class Produit
         return $this->categorie;
     }
 
-    public function setCategorie(?Categorie $categorie): self
+    public function setCategorie( ?Categorie $categorie ): self
     {
         $this->categorie = $categorie;
 

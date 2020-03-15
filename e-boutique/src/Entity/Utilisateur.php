@@ -78,7 +78,7 @@ class Utilisateur
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom( string $nom ): self
     {
         $this->nom = $nom;
 
@@ -90,7 +90,7 @@ class Utilisateur
         return $this->prenom;
     }
 
-    public function setPrenom(string $prenom): self
+    public function setPrenom( string $prenom ): self
     {
         $this->prenom = $prenom;
 
@@ -102,7 +102,7 @@ class Utilisateur
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail( string $email ): self
     {
         $this->email = $email;
 
@@ -114,7 +114,7 @@ class Utilisateur
         return $this->dateNaissance;
     }
 
-    public function setDateNaissance(\DateTimeInterface $dateNaissance): self
+    public function setDateNaissance( \DateTimeInterface $dateNaissance ): self
     {
         $this->dateNaissance = $dateNaissance;
 
@@ -126,7 +126,7 @@ class Utilisateur
         return $this->sexe;
     }
 
-    public function setSexe(?string $sexe): self
+    public function setSexe( ?string $sexe ): self
     {
         $this->sexe = $sexe;
 
@@ -138,7 +138,7 @@ class Utilisateur
         return $this->adresse;
     }
 
-    public function setAdresse(string $adresse): self
+    public function setAdresse( string $adresse ): self
     {
         $this->adresse = $adresse;
 
@@ -150,7 +150,7 @@ class Utilisateur
         return $this->codePostal;
     }
 
-    public function setCodePostal(int $codePostal): self
+    public function setCodePostal( int $codePostal ): self
     {
         $this->codePostal = $codePostal;
 
@@ -162,7 +162,7 @@ class Utilisateur
         return $this->ville;
     }
 
-    public function setVille(string $ville): self
+    public function setVille( string $ville ): self
     {
         $this->ville = $ville;
 
@@ -177,23 +177,23 @@ class Utilisateur
         return $this->commandes;
     }
 
-    public function addCommande(Commande $commande): self
+    public function addCommande( Commande $commande ): self
     {
-        if (!$this->commandes->contains($commande)) {
+        if ( !$this->commandes->contains( $commande ) ) {
             $this->commandes[] = $commande;
-            $commande->setUtilisateur($this);
+            $commande->setUtilisateur( $this );
         }
 
         return $this;
     }
 
-    public function removeCommande(Commande $commande): self
+    public function removeCommande( Commande $commande ): self
     {
-        if ($this->commandes->contains($commande)) {
-            $this->commandes->removeElement($commande);
+        if ( $this->commandes->contains( $commande ) ) {
+            $this->commandes->removeElement( $commande );
             // set the owning side to null (unless already changed)
-            if ($commande->getUtilisateur() === $this) {
-                $commande->setUtilisateur(null);
+            if ( $commande->getUtilisateur() === $this ) {
+                $commande->setUtilisateur( null );
             }
         }
 

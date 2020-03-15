@@ -43,7 +43,7 @@ class Categorie
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom( string $nom ): self
     {
         $this->nom = $nom;
 
@@ -58,23 +58,23 @@ class Categorie
         return $this->produits;
     }
 
-    public function addProduit(Produit $produit): self
+    public function addProduit( Produit $produit ): self
     {
-        if (!$this->produits->contains($produit)) {
+        if ( !$this->produits->contains( $produit ) ) {
             $this->produits[] = $produit;
-            $produit->setCategorie($this);
+            $produit->setCategorie( $this );
         }
 
         return $this;
     }
 
-    public function removeProduit(Produit $produit): self
+    public function removeProduit( Produit $produit ): self
     {
-        if ($this->produits->contains($produit)) {
-            $this->produits->removeElement($produit);
+        if ( $this->produits->contains( $produit ) ) {
+            $this->produits->removeElement( $produit );
             // set the owning side to null (unless already changed)
-            if ($produit->getCategorie() === $this) {
-                $produit->setCategorie(null);
+            if ( $produit->getCategorie() === $this ) {
+                $produit->setCategorie( null );
             }
         }
 

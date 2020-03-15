@@ -3,11 +3,11 @@
 {% block title %}Omni{% endblock %}
 
 {% block body %}
-
-    <div class="site-content site-content-home container">
-        <h1 class="font-weight-light">Bienvenue chez <strong>OMNI<strong></h1>
-        <a href="{{ path('produit_index') }}" class="btn btn-primary">Voir les produits</a>
+    <div class="site-content-home" style="background-image: url('{{ asset('image/home-bg.jpg') }}');">
+        <div class="container site-home__title">
+            <h1 class="font-weight-light">Bienvenue chez <strong>OMNI<strong></h1>
+            <a href="{{ path('produit_index') }}" class="btn btn-primary">Voir les produits</a>
+        </div>
     </div>
-
 </div> <!-- close div site-main -->
 {% endblock %}

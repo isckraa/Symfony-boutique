@@ -22,33 +22,17 @@ class ProduitRepository extends ServiceEntityRepository
      */
     private $paginator;
 
-    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
+    public function __construct( ManagerRegistry $registry, PaginatorInterface $paginator )
     {
-        parent::__construct($registry, Produit::class);
+        parent::__construct( $registry, Produit::class );
         $this->paginator = $paginator;
     }
 
-    /**
-     * @return Produit[] Returns an array of Produit objects
-     */
-
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.categorie = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    
     /** 
      * @return PaginationInterface Rècupèrer les produits en lien avec une recherche
      */
 
-    public function findSearch(SearchData $search): PaginationInterface
+    public function findSearch( SearchData $search ): PaginationInterface
     {
         $query = $this
             ->createQueryBuilder( 'p' );

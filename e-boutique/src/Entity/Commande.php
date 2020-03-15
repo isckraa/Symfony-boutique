@@ -58,7 +58,7 @@ class Commande
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate( \DateTimeInterface $date ): self
     {
         $this->date = $date;
 
@@ -70,7 +70,7 @@ class Commande
         return $this->reference;
     }
 
-    public function setReference(string $reference): self
+    public function setReference( string $reference ): self
     {
         $this->reference = $reference;
 
@@ -82,7 +82,7 @@ class Commande
         return $this->status;
     }
 
-    public function setStatus(string $status): self
+    public function setStatus( string $status ): self
     {
         $this->status = $status;
 
@@ -94,7 +94,7 @@ class Commande
         return $this->utilisateur;
     }
 
-    public function setUtilisateur(?Utilisateur $utilisateur): self
+    public function setUtilisateur( ?Utilisateur $utilisateur ): self
     {
         $this->utilisateur = $utilisateur;
 
@@ -109,19 +109,19 @@ class Commande
         return $this->produits;
     }
 
-    public function addProduit(Produit $produit): self
+    public function addProduit( Produit $produit ): self
     {
-        if (!$this->produits->contains($produit)) {
+        if ( !$this->produits->contains( $produit ) ) {
             $this->produits[] = $produit;
         }
 
         return $this;
     }
 
-    public function removeProduit(Produit $produit): self
+    public function removeProduit( Produit $produit ): self
     {
-        if ($this->produits->contains($produit)) {
-            $this->produits->removeElement($produit);
+        if ( $this->produits->contains( $produit ) ) {
+            $this->produits->removeElement( $produit );
         }
 
         return $this;
