@@ -1,5 +1,9 @@
 <div class="card">
-    <img src="https://unsplash.it/800/600?image=59" alt="card-image" class="card-img-top">
+    {% if produit.image is not null %}
+        <img src="/public/image/{{ produit.image }}" alt="card-image" class="card-img-top">
+    {% else %}
+        <img src="https://unsplash.it/800/600?image=59" alt="card-image" class="card-img-top">
+    {% endif %}
     <div class="card-body">
         <h5 class="card-title" style="font-size: 13px;">{{ produit.nom }}</h5>
         <div class="card-title text-danger d-flex justify-content-between" style="font-weight: bold; font-size: 16px;">
