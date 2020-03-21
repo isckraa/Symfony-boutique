@@ -4,13 +4,13 @@
 
 {% block body %}
     <div class="container">
-        <div class="bg-light p-3">
+        <div class="p-3 mb-3">
             <h1>Votre panier</h1>
         </div>
 
         {% if items is not empty %}
-            <table class="table">
-                <thead>
+            <table class="table table-striped">
+                <thead class="thead-dark">
                     <tr>
                         <th>Produit</th>
                         <th>Prix</th>
@@ -22,7 +22,7 @@
                 <tbody>
                     {% for item in items %}
                         <tr>
-                            <td>{{ item.product.nom }}</td>
+                            <td><img src="/public/image/{{ item.product.image }}" alt="card-image" class="card-img-top mr-3" style="max-width: 150px; height: 100px;">{{ item.product.nom }}</td>
                             <td>{{ item.product.prix }}</td>
                             <td>{{ item.quantity }}</td>
                             <td>{{ item.product.prix * item.quantity }}</td>

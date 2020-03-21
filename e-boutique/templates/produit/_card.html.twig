@@ -10,8 +10,8 @@
             <em class="text-muted text-primary">{{ produit.categorie.nom }}</em>
             {{ produit.prix | number_format(0, ',', ' ') }} €
         </div>
-        <p class="text text-muted" style="font-size: 13px;">{{ produit.description }}</p>
-        <a href="{{ path('produit_add', {'id': produit.id}) }}" class="btn btn-success float-right">
+        <p class="text text-muted card__text" style="font-size: 13px;">{{ produit.description }}</p>
+        <a href="{{ path('produit_add', {'id': produit.id}) }}" class="btn btn-success float-right card-add_product">
             <i class="fas fa-shopping-cart mr-1"></i>
             Ajouter
         </a>

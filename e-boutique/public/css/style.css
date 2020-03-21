@@ -59,3 +59,17 @@ a:hover {
     height: 200px;
     object-fit: cover;
 }
+
+.card-body {
+    position: relative;
+}
+
+.card__text {
+    padding-bottom: 50px;
+}
+
+.card-add_product {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
