@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Repository\ProduitRepository;
+use App\Service\Panier\PanierService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PanierController extends AbstractController
@@ -12,48 +11,21 @@ class PanierController extends AbstractController
     /**
      * @Route("/panier", name="panier")
      */
-    public function index( SessionInterface $session, ProduitRepository $productRepository )
+    public function index( PanierService $panierService )
     {
-        $panier = $session->get( 'panier', [] );
-
-        $panierWithData = [];
-
-        foreach( $panier as $id => $quantity ) {
-            $panierWithData[] = [
-                'product'   => $productRepository->find( $id ),
-                'quantity'  => $quantity
-            ];
-        }
-
-        $total = 0;
-
-        foreach( $panierWithData as $item ) {
-            $totalItem = $item['product']->getPrix() * $item['quantity'];
-            $total += $totalItem;
-        }
-
-
         return $this->render( 'panier/index.html.twig', [
             'controller_name' => 'PanierController',
-            'items'           => $panierWithData,
-            'total'           => $total
+            'items'           => $panierService->getFullCart(),
+            'total'           => $panierService->getTotal()
         ]);
     }
 
     /**
      * @Route("/panier/add/{id}", name="produit_add")
      */
-    public function add( $id, SessionInterface $session )
+    public function add( $id, PanierService $panierService )
     {
-        $panier = $session->get( 'panier', [] );
-
-        if( !empty( $panier[$id] ) ) {
-            $panier[$id]++;
-        } else {
-            $panier[$id] = 1;
-        }
-
-        $session->set( 'panier', $panier );
+        $panierService->add( $id );
 
         return $this->redirectToRoute( "panier" );
     }
@@ -61,14 +33,9 @@ class PanierController extends AbstractController
     /**
      * @Route("/panier/supprimer/{id}", name="panier_remove")
      */
-    public function remove( $id, SessionInterface $session ) {
-        $panier = $session->get( 'panier', [] );
-
-        if( !empty( $panier ) ){
-            unset( $panier[$id] );
-        }
-
-        $session->set( 'panier', $panier );
+    public function remove( $id, PanierService $panierService ) 
+    {
+        $panierService->remove( $id );
 
         return $this->redirectToRoute( "panier" );
     }
