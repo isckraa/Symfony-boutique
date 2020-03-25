@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProduitRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
  */
-class Produit
+class Product
 {
     /**
      * @ORM\Id()
@@ -19,7 +19,7 @@ class Produit
     /**
      * @ORM\Column(type="string", length=64)
      */
-    private $nom;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -29,17 +29,17 @@ class Produit
     /**
      * @ORM\Column(type="integer")
      */
-    private $prix;
+    private $price;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $avis;
+    private $notice;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $note;
+    private $grade;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -47,24 +47,24 @@ class Produit
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="produits")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $categorie;
+    private $category;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getName(): ?string
     {
-        return $this->nom;
+        return $this->name;
     }
 
-    public function setNom( string $nom ): self
+    public function setName( string $name ): self
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
@@ -81,38 +81,38 @@ class Produit
         return $this;
     }
 
-    public function getPrix(): ?int
+    public function getPrice(): ?int
     {
-        return $this->prix;
+        return $this->price;
     }
 
-    public function setPrix( int $prix ): self
+    public function setPrice( int $price ): self
     {
-        $this->prix = $prix;
+        $this->price = $price;
 
         return $this;
     }
 
-    public function getAvis(): ?int
+    public function getNotice(): ?int
     {
-        return $this->avis;
+        return $this->notice;
     }
 
-    public function setAvis( int $avis ): self
+    public function setNotice( int $notice ): self
     {
-        $this->avis = $avis;
+        $this->notice = $notice;
 
         return $this;
     }
 
-    public function getNote(): ?float
+    public function getGrade(): ?float
     {
-        return $this->note;
+        return $this->grade;
     }
 
-    public function setNote( float $note ): self
+    public function setGrade( float $grade ): self
     {
-        $this->note = $note;
+        $this->grade = $grade;
 
         return $this;
     }
@@ -129,14 +129,14 @@ class Produit
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
+    public function getCategory(): ?Category
     {
-        return $this->categorie;
+        return $this->category;
     }
 
-    public function setCategorie( ?Categorie $categorie ): self
+    public function setCategory( ?Category $category ): self
     {
-        $this->categorie = $categorie;
+        $this->category = $category;
 
         return $this;
     }

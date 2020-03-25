@@ -5,14 +5,14 @@
         <img src="https://unsplash.it/800/600?image=59" alt="card-image" class="card-img-top">
     {% endif %}
     <div class="card-body">
-        <h5 class="card-title" style="font-size: 13px;">{{ product.nom }}</h5>
+        <h5 class="card-title" style="font-size: 13px;">{{ product.name }}</h5>
         <div class="card-title text-danger d-flex justify-content-between" style="font-weight: bold; font-size: 16px;">
-            <em class="text-muted text-primary">{{ product.categorie.nom }}</em>
-            {{ product.prix | number_format(0, ',', ' ') }} €
+            <em class="text-muted text-primary">{{ product.category.name }}</em>
+            {{ product.price | number_format(0, ',', ' ') }} €
         </div>
         <div class="card-description d-flex justify-content-between text text-muted mb-2" style="font-size: 13px;">
-            <span class="card-notice">Avis : {{ product.avis }} &#129488;</span>
-            <span class="card-note">Note : {{ product.note }} &#11088;</span>
+            <span class="card-notice">Avis : {{ product.notice }} &#129488;</span>
+            <span class="card-note">Note : {{ product.grade }} &#11088;</span>
         </div>
         <p class="text text-muted card__text" style="font-size: 13px;">{{ product.description }}</p>
         <a href="{{ path('product_add', {'id': product.id}) }}" class="btn btn-success float-right card-add_product">

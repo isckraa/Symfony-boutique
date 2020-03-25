@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Data\SearchData;
-use App\Entity\Categorie;
+use App\Entity\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -27,7 +27,7 @@ class SearchForm extends AbstractType
             ->add( 'categories', EntityType::class, [
                 'label'     => false,
                 'required'  => false,
-                'class'     => Categorie::class,
+                'class'     => Category::class,
                 'expanded'  => true,
                 'multiple'  => true
             ])
