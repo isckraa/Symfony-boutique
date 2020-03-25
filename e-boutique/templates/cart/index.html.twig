@@ -22,12 +22,12 @@
                 <tbody>
                     {% for item in items %}
                         <tr>
-                            <td><img src="/public/image/{{ item.product.image }}" alt="card-image" class="card-img-top mr-3" style="max-width: 150px; height: 100px;">{{ item.product.nom }}</td>
+                            <td><img src="{{ asset('image/' ~ item.product.image) }}" alt="card-image" class="card-img-top mr-3" style="max-width: 150px; height: 100px;">{{ item.product.nom }}</td>
                             <td>{{ item.product.prix }}</td>
                             <td>{{ item.quantity }}</td>
                             <td>{{ item.product.prix * item.quantity }}</td>
                             <td>
-                                <a href="{{ path('panier_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
+                                <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>

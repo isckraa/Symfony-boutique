@@ -4,33 +4,33 @@ namespace App\Controller;
 
 use App\Data\SearchData;
 use App\Form\SearchForm;
-use App\Repository\ProduitRepository;
-use App\Repository\CategorieRepository;
+use App\Repository\ProductRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/produit")
+ * @Route("/product")
  */
-class ProduitController extends AbstractController
+class ProductController extends AbstractController
 {
     
     /**
-     * @Route("/", name="produit_index", methods={"GET"})
+     * @Route("/", name="product_index", methods={"GET"})
      */
-    public function index( ProduitRepository $produitRepository, CategorieRepository $categorieRepository, Request $request ): Response
+    public function index( ProductRepository $productRepository, CategoryRepository $categoryRepository, Request $request ): Response
     {
         $data = new SearchData();
 
         $form = $this->createForm( SearchForm::class, $data );
         $form->handleRequest( $request );
 
-        $produits = $produitRepository->findSearch( $data );
+        $products = $productRepository->findSearch( $data );
 
-        return $this->render( 'produit/index.html.twig', [
-            'produits'      => $produits,
+        return $this->render( 'product/index.html.twig', [
+            'products'      => $products,
             'form'          => $form->createView(),
         ]);
     }

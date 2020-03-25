@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Service\Panier;
+namespace App\Service\Cart;
 
-use App\Repository\ProduitRepository;
+use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class PanierService {
+class CartService {
     
     protected $session;
     protected $productRepository;
 
-    public function __construct( SessionInterface $session, ProduitRepository $productRepository )
+    public function __construct( SessionInterface $session, ProductRepository $productRepository )
     {
         $this->session = $session;
         $this->productRepository = $productRepository;
@@ -18,42 +18,42 @@ class PanierService {
 
     public function add( int $id )
     {
-        $panier = $this->session->get( 'panier', [] );
+        $cart = $this->session->get( 'cart', [] );
 
-        if( !empty( $panier[$id] ) ) {
-            $panier[$id]++;
+        if( !empty( $cart[$id] ) ) {
+            $cart[$id]++;
         } else {
-            $panier[$id] = 1;
+            $cart[$id] = 1;
         }
 
-        $this->session->set( 'panier', $panier );
+        $this->session->set( 'cart', $cart );
     }
 
     public function remove( int $id )
     {
-        $panier = $this->session->get( 'panier', [] );
+        $cart = $this->session->get( 'cart', [] );
 
-        if( !empty( $panier ) ){
-            unset( $panier[$id] );
+        if( !empty( $cart ) ){
+            unset( $cart[$id] );
         }
 
-        $this->session->set( 'panier', $panier );
+        $this->session->set( 'cart', $cart );
     }
 
     public function getFullCart() : array
     {
-        $panier = $this->session->get( 'panier', [] );
+        $cart = $this->session->get( 'cart', [] );
 
-        $panierWithData = [];
+        $cartWithData = [];
 
-        foreach( $panier as $id => $quantity ) {
-            $panierWithData[] = [
+        foreach( $cart as $id => $quantity ) {
+            $cartWithData[] = [
                 'product'   => $this->productRepository->find( $id ),
                 'quantity'  => $quantity
             ];
         }
 
-        return $panierWithData;
+        return $cartWithData;
     }
 
     public function getTotal() : float

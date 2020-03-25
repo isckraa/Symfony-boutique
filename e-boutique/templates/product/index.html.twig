@@ -6,12 +6,12 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-3 site-content-filter bg-info">
-                {% include 'produit/_filter.html.twig' with {form: form} only %}
+                {% include 'product/_filter.html.twig' with { form: form } only %}
             </div>
             <div class="col-md-9">
                 <div class="grid">
-                    {% for produit in produits %}
-                        {% include 'produit/_card.html.twig' with {produit: produit} only %}
+                    {% for product in products %}
+                        {% include 'product/_card.html.twig' with { product: product } only %}
                     {% endfor %}
                 </div>
             </div>
