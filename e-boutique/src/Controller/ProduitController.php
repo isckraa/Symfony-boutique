@@ -23,7 +23,6 @@ class ProduitController extends AbstractController
     public function index( ProduitRepository $produitRepository, CategorieRepository $categorieRepository, Request $request ): Response
     {
         $data = new SearchData();
-        $data->page = $request->get( 'page', 1 );
 
         $form = $this->createForm( SearchForm::class, $data );
         $form->handleRequest( $request );
