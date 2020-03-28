@@ -68,6 +68,12 @@ a:hover {
     padding-bottom: 50px;
 }
 
+.card-edit_product {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
 .card-add_product {
     position: absolute;
     bottom: 15px;
