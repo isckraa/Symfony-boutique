@@ -42,6 +42,11 @@
                     </tr>
                 </tfoot>
             </table>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <a href="{{ path('home') }}" class="btn btn-success">Commander</a>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="btn btn-success">Commander</a>
+            {% endif %}
         {% else %}
             <h4>Votre panier est vide.</h4>
         {% endif %}
