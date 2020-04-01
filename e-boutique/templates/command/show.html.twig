@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Command{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div id="commands" class="mt-3">
+            <h1>Commandes</h1>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ command.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>CommandNumber</th>
+                        <td>{{ command.command.orderNumber }}</td>
+                    </tr>
+                    <tr>
+                        <th>State</th>
+                        <td>{{ command.command.state }}</td>
+                    </tr>
+                    <tr>
+                        <th>DateTime</th>
+                        <td>{{ command.command.dateTime ? command.command.dateTime|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="products" class="mt-4 mb-4">
+            <h1>Produits</h1>
+            <ul class="list-group">
+                {% for product in products %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <img src="{{ asset('image/' ~ product.image) }}" alt="card-image" class="card-img-top mr-3" style="max-width: 150px; height: 100px;">
+                            <p>{{ product.name }}</p>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <p><strong>Quantité :</strong> {{ quantities[loop.index0] }}</p>
+                        </div>
+                    </li>                    
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="{{ path('command_index') }}" class="btn btn-success">Liste des commandes</a>
+    </div>
+{% endblock %}

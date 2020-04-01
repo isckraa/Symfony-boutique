@@ -19,14 +19,14 @@ class CommandLineRepository extends ServiceEntityRepository
         parent::__construct($registry, CommandLine::class);
     }
 
-    // /**
-    //  * @return CommandLine[] Returns an array of CommandLine objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return CommandLine[] Returns an array of CommandLine objects
+     */
+    
+    public function findByCommand($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.command = :val')
             ->setParameter('val', $value)
             ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
@@ -34,7 +34,7 @@ class CommandLineRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?CommandLine
