@@ -66,4 +66,17 @@ class CartService {
 
         return $total;
     }
+
+    public function decrement( int $id )
+    {
+        $cart = $this->session->get( 'cart', [] );
+
+        if( !empty( $cart[$id] && $cart[$id] !== 1 ) ) {
+            $cart[$id]--;
+        } else {
+            unset( $cart[$id] );
+        }
+
+        $this->session->set( 'cart', $cart );
+    }
 }

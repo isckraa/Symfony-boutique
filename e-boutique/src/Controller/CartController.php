@@ -39,4 +39,14 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute( "cart" );
     }
+
+    /**
+     * @Route("/cart/decrement/{id}", name="product_decrement")
+     */
+    public function decrement( $id, CartService $cartService ) 
+    {
+        $cartService->decrement( $id );
+
+        return $this->redirectToRoute( "cart" );
+    }
 }

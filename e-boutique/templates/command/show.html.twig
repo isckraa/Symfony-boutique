@@ -5,23 +5,23 @@
 {% block body %}
     <div class="container">
         <div id="commands" class="mt-3">
-            <h1>Commandes</h1>
-            <table class="table table-striped">
+            <div class="jumbotron">
+                <h1>Commandes</h1>
+            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Numéro de la commande</th>
+                        <th>Statut</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr>
-                        <th>Id</th>
                         <td>{{ command.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>CommandNumber</th>
                         <td>{{ command.command.orderNumber }}</td>
-                    </tr>
-                    <tr>
-                        <th>State</th>
                         <td>{{ command.command.state }}</td>
-                    </tr>
-                    <tr>
-                        <th>DateTime</th>
                         <td>{{ command.command.dateTime ? command.command.dateTime|date('Y-m-d H:i:s') : '' }}</td>
                     </tr>
                 </tbody>
@@ -29,7 +29,9 @@
         </div>
         
         <div id="products" class="mt-4 mb-4">
-            <h1>Produits</h1>
+            <div class="jumbotron">
+                <h1>Produits</h1>
+            </div>
             <ul class="list-group">
                 {% for product in products %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">

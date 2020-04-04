@@ -5,7 +5,9 @@
 {% block body %}
     <div class="container">
         <div id="commands" class="mt-3">
-            <h1>Commandes</h1>
+            <div class="jumbotron">
+                <h1>Commandes</h1>
+            </div>
 
             <table class="table">
                 <thead class="thead-dark">
@@ -26,12 +28,11 @@
                         <td>{{ command.dateTime ? command.dateTime|date('Y-m-d H:i:s') : '' }}</td>
                         <td>
                             <a href="{{ path('command_show', {'id': command.id}) }}" class="btn btn-primary">show</a>
-                            {# <a href="{{ path('command_edit', {'id': command.id}) }}">edit</a> #}
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="5">no records found</td>
+                        <td colspan="5">Pas de résultats</td>
                     </tr>
                 {% endfor %}
                 </tbody>

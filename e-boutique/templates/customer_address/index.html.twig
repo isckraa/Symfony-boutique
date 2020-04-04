@@ -4,21 +4,22 @@
 
 {% block body %}
     <div class="container">
-        <h1>CustomerAddress index</h1>
-
+        <div class="jumbotron">
+            <h1>Adresse</h1>
+        </div>
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>FirstName</th>
-                    <th>Phone</th>
-                    <th>Address</th>
-                    <th>Postcode</th>
-                    <th>City</th>
-                    <th>Country</th>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Téléphone</th>
+                    <th>Adresse</th>
+                    <th>Code</th>
+                    <th>Ville</th>
+                    <th>Pays</th>
                     <th>Type</th>
-                    <th>actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +40,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="10">no records found</td>
+                    <td colspan="10">Pas de résultats</td>
                 </tr>
             {% endfor %}
             </tbody>
