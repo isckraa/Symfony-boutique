@@ -71,28 +71,6 @@ class CommandController extends AbstractController
         return $this->redirectToRoute( "command_index" );
     }
 
-    /*
-    public function new(Request $request): Response
-    {
-        $command = new Command();
-        $form = $this->createForm(CommandType::class, $command);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($command);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('command_index');
-        }
-
-        return $this->render('command/new.html.twig', [
-            'command' => $command,
-            'form' => $form->createView(),
-        ]);
-    }
-    */
-
     /**
      * @Route("/{id}", name="command_show", methods={"GET"})
      */
@@ -102,7 +80,6 @@ class CommandController extends AbstractController
         $products = array();
         $quantities = array();
         
-        // dd($commandLineRepository->findByCommand($commandId));
 
         foreach( $commandLineRepository->findByCommand($commandId) as $command )
         {
@@ -113,10 +90,6 @@ class CommandController extends AbstractController
             array_push($products, $product);
             array_push($quantities, $quantity);
         }
-
-        // var_dump($products);
-        // exit;
-        // dd($products);
 
         return $this->render('command/show.html.twig', [
             'command'   => $command,

@@ -17,7 +17,7 @@
         <p class="text text-muted card__text" style="font-size: 13px;">{{ product.description }}</p>
 
         {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('product_add', {'id': product.id}) }}" class="btn btn-success float-left card-edit_product">
+            <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-success float-left card-edit_product">
                 <i class="fas fa-shopping-cart mr-1"></i>
                 Modifier
             </a>
