@@ -31,7 +31,8 @@
                             {% if not app.user %}
                                 <li class="nav-item"><a class="nav-link " href="{{ path('app_login') }}">Connexion</a></li>
                             {% else %}
-                                <li class="nav-item"><a class="nav-link " href="{{ path('customer_address_index') }}">Compte</a></li>
+                                <li class="nav-item"><a class="nav-link " href="{{ path('user_index') }}">Compte</a></li>
+                                <li class="nav-item"><a class="nav-link " href="{{ path('customer_address_index') }}">Adresses</a></li>
                                 <li class="nav-item"><a class="nav-link " href="{{ path('command_index') }}">Commandes</a></li>
                                 <li class="nav-item"><a class="nav-link " href="{{ path('app_logout') }}">Déconnexion</a></li>
                             {% endif %}

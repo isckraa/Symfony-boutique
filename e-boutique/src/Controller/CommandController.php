@@ -79,13 +79,13 @@ class CommandController extends AbstractController
         $commandId = $command->getId();
         $products = array();
         $quantities = array();
-        
+        $total = 0;
 
         foreach( $commandLineRepository->findByCommand($commandId) as $command )
         {
             $product = $command->getProduct();
             $quantity = $command->getQuantity();
-
+            $total += $product->getPrice() * $quantity;
 
             array_push($products, $product);
             array_push($quantities, $quantity);
@@ -95,6 +95,7 @@ class CommandController extends AbstractController
             'command'   => $command,
             'products'  => $products,
             'quantities'=> $quantities,
+            'total'     => $total,
         ]);
     }
 

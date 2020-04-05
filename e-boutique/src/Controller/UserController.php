@@ -20,8 +20,12 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository): Response
     {
+        $userEmail = $this->getUser()->getEmail();
+        $userId = $this->getUser()->getId();
+
         return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'user' => $userRepository->findByEmail( $userEmail ),
+            'userId' => $userId,
         ]);
     }
 
